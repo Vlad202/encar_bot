@@ -12,8 +12,8 @@ import json
 
 app = TeleBot(TELEGRAM_TOKEN)
 URLS = {
-	'first': 'http://api.encar.com/search/car/list/premium?count=true&q=(And.(And.Hidden.N._.CarType.Y._.Price.range(..900).)_.AdType.B.)&sr=%7CModifiedDate%7C0%7C8',
-	'second': 'http://api.encar.com/search/car/list/premium?count=true&q=(And.Hidden.N._.CarType.Y._.Price.range(..900).)&sr=%7CModifiedDate%7C0%7C20'
+	'first': 'http://api.encar.com/search/car/list/premium?count=true&q=(And.(And.Hidden.N._.CarType.Y._.Year.range(201200..)._.Price.range(..900).)_.AdType.B.)&sr=%7CModifiedDate%7C0%7C8',
+	'second': 'http://api.encar.com/search/car/list/premium?count=true&q=(And.Hidden.N._.CarType.Y._.Year.range(201200..)._.Price.range(..900).)&sr=%7CModifiedDate%7C0%7C20'
 }
 
 
@@ -75,7 +75,11 @@ def encar_parser(response):
 			continue
 		text += f'{keys[i]}: {values[i]}\n'
 	car_id = f'encar - {car_id}'
-	os.mkdir(car_id)
+	try:
+		os.mkdir(car_id)
+	except:
+		shutil.rmtree(f'{car_id}/')
+		os.mkdir(car_id)
 	with open(f'./{car_id}/'+car_id+'.txt', 'w') as f:
 		f.write(text)
 	image_id = 0
