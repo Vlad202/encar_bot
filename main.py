@@ -12,8 +12,8 @@ import json
 
 app = TeleBot(TELEGRAM_TOKEN)
 URLS = {
-	'first': 'http://api.encar.com/search/car/list/premium?count=true&q=(And.(And.Hidden.N._.CarType.Y._.Year.range(201200..)._.Price.range(..900).)_.AdType.B.)&sr=%7CModifiedDate%7C0%7C8',
-	'second': 'http://api.encar.com/search/car/list/premium?count=true&q=(And.Hidden.N._.CarType.Y._.Year.range(201200..)._.Price.range(..900).)&sr=%7CModifiedDate%7C0%7C20'
+	'first': 'http://api.encar.com/search/car/list/premium?count=true&q=(And.(And.Hidden.N._.CarType.Y._.Price.range(..900)._.Year.range(201200..201999).)_.AdType.B.)&sr=%7CModifiedDate%7C0%7C8',
+	'second': 'http://api.encar.com/search/car/list/premium?count=true&q=(And.Hidden.N._.CarType.Y._.Price.range(..900)._.Year.range(201200..201999).)&sr=%7CModifiedDate%7C0%7C20'
 }
 
 
